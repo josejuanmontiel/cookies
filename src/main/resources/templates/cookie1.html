@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <p th:text="'Request param: ' + ${rp}" />
+    <p th:unless="${session == null}"
+       th:text="'Session param: ' + ${session.sp}" />
+    <p th:unless="${#ctx.httpServletRequest.getCookies()==null}"
+       th:text="'Cookie param: ' + ${T(com.example.demo.Cookie1Controller).getCookieValue(#ctx.httpServletRequest,'cp')}" />
+
+    <img th:if="${#strings.startsWith(#httpServletRequest.getHeader('Host'),'a.')}"
+    		src="http://b.127.0.0.1.xip.io:9001/cookie1?rp=request_from_a&amp;sp=session_from_a&amp;cp=cookie_from_a" style="display:none;" />
+
+
+</body>
+</html>

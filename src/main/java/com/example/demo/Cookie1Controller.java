@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class Cookie1Controller {
 
 	@RequestMapping("/cookie1")
-	public String greeting(
+	public String cookie1(
 			@RequestParam(value = "rp", required = false) String reqparam,
 			@RequestParam(value = "sp", required = false) String sesparam,
 			@RequestParam(value = "cp", required = false) String cookiparam,

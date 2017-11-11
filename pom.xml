@@ -33,6 +33,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<!-- Para cambiar el cliente por debajo... -->
+		<dependency>
+    		<groupId>org.apache.httpcomponents</groupId>
+    		<artifactId>httpclient</artifactId>
+    		<!--Version is not needed when used with Spring Boot parent pom file
+    		<version>4.5.1</version -->
+		</dependency>		
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

@@ -1,0 +1,62 @@
+<html>
+<head>
+  <script type="text/javascript">
+  /*<![CDATA[*/
+	function loginRemoto() {
+		var username = document.getElementById("username").value;
+		var password = document.getElementById("password").value;
+
+		var http = new XMLHttpRequest();
+		var url = "http://a.127.0.0.1.xip.io:9000/login";
+		var params = "username="+username+"&password="+password;
+		http.open("POST", url, true);
+
+		//Send the proper header information along with the request
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+		http.onreadystatechange = function() { //Call a function when the state changes.
+		    if(http.readyState == 4 && http.status == 200) {
+		    	var jsessionid = getJSessionId(http.responseURL);
+		    	document.cookie = "jsessionfroma="+jsessionid; 
+		    }
+		}
+		http.send(params);		
+	}
+  
+	function getJSessionId(responseURL){
+//	    var jsId = document.cookie.match(/JSESSIONID=[^;]+/);
+	    var jsId = responseURL.match(/jsessionid=[^;]+/);
+	    if(jsId != null) {
+	        if (jsId instanceof Array)
+	            jsId = jsId[0].substring(11);
+	        else
+	            jsId = jsId.substring(11);
+	    }
+	    return jsId;
+	}  
+  
+	/*]]>*/
+  </script>
+</head>
+<body>
+   <h1>Login</h1>
+   <form name='f' action="login" method='POST'>
+      <table>
+         <tr>
+            <td>User:</td>
+            <td><input type="text" id="username" name="username" value="" /></td>
+         </tr>
+         <tr>
+            <td>Password:</td>
+            <td><input type="password" id="password" name="password" /></td>
+         </tr>
+         <tr>
+            <td><input name="submit" type="submit" value="submit" /></td>
+         </tr>
+      </table>
+  </form>
+  
+  <button onclick="loginRemoto()">Login Remoto</button>
+  
+</body>
+</html>

@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cookie1</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+     <p th:unless="${session == null}" th:text="'User logged: ---' + ${session.user} + '---'" />
+
+     <p th:text="'isLogged? ' + ${isLogged}" />
+</body>
+</html>

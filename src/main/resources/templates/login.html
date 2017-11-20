@@ -17,7 +17,8 @@
 		http.onreadystatechange = function() { //Call a function when the state changes.
 		    if(http.readyState == 4 && http.status == 200) {
 		    	var jsessionid = getJSessionId(http.responseURL);
-		    	document.cookie = "jsessionfroma="+jsessionid; 
+		    	document.cookie = "jsessionfroma="+jsessionid;
+		    	document.location.href = "/isLogged";
 		    }
 		}
 		http.send(params);		

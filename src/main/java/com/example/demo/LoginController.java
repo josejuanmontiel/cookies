@@ -54,8 +54,6 @@ public class LoginController {
 	
 	@GetMapping("/isLogged")
 	public String isLogged(@CookieValue(value="jsessionfroma", required=false) String jsessionfroma, HttpSession session, Model model) {
-		model.addAttribute("isLogged","admin".equals(session.getAttribute("user")));
-
 		if (jsessionfroma!=null) {
 			ParameterizedTypeReference<String> typeRef = new ParameterizedTypeReference<String>() {};
 			HttpHeaders requestHeaders = new HttpHeaders();
@@ -78,6 +76,8 @@ public class LoginController {
 			
 			System.out.println(response.getBody());		
 		}
+
+		model.addAttribute("isLogged","admin".equals(session.getAttribute("user")));
 		
 		return "isLogged";
 	}
